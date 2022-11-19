@@ -1,8 +1,10 @@
 let url =
   "https://calendarific.com/api/v2/countries?api_key=248b0a97898564f4c3c2672cb6dfe64f407f3bfd";
 
+// Get Country details
 const getCountryDetails = async () => {
   try {
+    // Inside fetch there is no data except url because removing that data solved the cors issue
     const cats = await fetch(url);
     const data = await cats.json();
     for (let country of data.response.countries) {
@@ -15,6 +17,7 @@ const getCountryDetails = async () => {
 };
 getCountryDetails();
 
+// Display holiday count of each country
 const renderHolidayDetails = (country) => {
   document.querySelector(".main-container").innerHTML += `
     <div class='container'>
