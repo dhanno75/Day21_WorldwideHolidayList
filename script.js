@@ -3,15 +3,8 @@ let url =
 
 const getCountryDetails = async () => {
   try {
-    const cats = await fetch(url, {
-      method: "GET",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const cats = await fetch(url);
     const data = await cats.json();
-    // console.log(data.response.countries);
     for (let country of data.response.countries) {
       renderHolidayDetails(country);
     }
