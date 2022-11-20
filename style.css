@@ -19,10 +19,14 @@ body {
   margin: 0 auto;
   text-align: center;
   padding: 20px;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
 
+.search-container {
+  display: flex;
+  flex-direction: column;
+}
 .title {
   background-image: linear-gradient(270deg, #eceff1, #87d8ca);
   -webkit-background-clip: text;
