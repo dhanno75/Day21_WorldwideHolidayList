@@ -43,20 +43,24 @@ search.addEventListener("keyup", (e) => {
   console.log(dataStore);
 
   if (textSearched !== "") {
-    filteredData = dataStore.filter((country) =>
-      country.country_name
-        .toLowerCase()
-        .includes(
-          textSearched.toLowerCase() ||
-            country["iso-3166"].includes(textSearched)
-        )
+    filteredData = dataStore.filter(
+      (country) =>
+        country.country_name
+          .toLowerCase()
+          .includes(textSearched.toLowerCase()) ||
+        country["iso-3166"].includes(textSearched)
     );
+
+    if (filteredData.length !== 0) {
+      document.querySelector(".main-container").innerHTML = "";
+    }
 
     for (let data of filteredData) {
       renderSearchData(data);
     }
   } else {
     alert("No such country found!");
+    getCountryDetails();
   }
 });
 
@@ -67,7 +71,7 @@ const renderSearchData = (country) => {
     alert("No such country found");
   }
   let mainContainer = document.querySelector(".main-container");
-  mainContainer.innerHTML = "";
+  // mainContainer.innerHTML = "";
   mainContainer.innerHTML += `
     <div class='container'>
       <h2><span> ${country.country_name}</span></h2>
